@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/vagrant/holbertonschool-low_level_programming/0x12-singly_linked_lists'
+let g:netrw_dirhist_2='/home/vagrant/holbertonschool-low_level_programming/0x1A-hash_tables'
+let g:netrw_dirhist_3='/home/vagrant/holbertonschool-higher_level_programming/0x06-python-classes'
