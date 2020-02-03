@@ -13,25 +13,28 @@ void bubble_sort(int *array, size_t size)
 	for (i = 1; i < size; i++)
 	{
 
-		if (array[i - 1] > array[i])
+		while (i < size)
 		{
-			if (i == size)
+			if (array[i - 1] > array[i])
 			{
-				do_swap(array, i - 1, i);
-                                print_array(array, size);
-				break;
+				if (i == size)
+				{
+					do_swap(array, i - 1, i);
+	                                print_array(array, size);
+					i++;
+				}
+				else
+				{
+					do_swap(array, i - 1, i);
+	        	               	print_array(array, size);
+					i++;
+				}
 			}
-			else
-			{
-				do_swap(array, i - 1, i);
-        	               	print_array(array, size);
-				break;
-			}
+			i++;
 		}
 	}
-	if (i < size)
-		bubble_sort(array, size);
 }
+
 
 int *do_swap(int *array, int pos1, int pos2)
 {

@@ -14,17 +14,13 @@ void insertion_sort_list(listint_t **list)
 	tmp = *list;
 
 	if (tmp->next)
-	{
 		tmp = tmp->next;
-		a  = tmp->prev;
-	}
 
 	while (tmp)
 	{
-		if (tmp->next)
-			b = tmp->next;
+		a = tmp->prev;
 
-		if (tmp->prev->n > tmp->n)
+		if (a->n > tmp->n)
 		{
 			change_no(tmp, a, b);
 			print_list(*list);
@@ -34,16 +30,18 @@ void insertion_sort_list(listint_t **list)
 
 void change_no(listint_t *t, listint_t *a, listint_t *b)
 {
-	if (b)
-		b->prev = a;
 
+	b = t->next, t->next = a;
 	a->next = b;
-	t->next = NULL, t->prev = NULL;
-	/*if (t->next)
-	t->next = a;*/
-	
-	if (a->prev)
-		a->prev->next = t, t->prev = a->prev;
+	a->prev = t;
+	b->prev = a;
 
-	t->next = a;
+	if (a->prev)
+	{	t->prev = a->prev;
+		a->prev->next = t;
+	}
+	else
+		t->prev = NULL;
+
+	return;
 }
