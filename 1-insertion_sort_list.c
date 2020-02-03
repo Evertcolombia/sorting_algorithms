@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void change_no(listint_t *, listint_t *a, listint_t *b);
+void change_no(listint_t *t, listint_t *a, listint_t *b);
 
 void insertion_sort_list(listint_t **list)
 {
@@ -12,15 +12,19 @@ void insertion_sort_list(listint_t **list)
 		return;
 
 	tmp = *list;
-	tmp = tmp->next;
+
+	if (tmp->next)
+	{
+		tmp = tmp->next;
+		a  = tmp->prev;
+	}
 
 	while (tmp)
 	{
-		a = tmp->prev;
 		if (tmp->next)
 			b = tmp->next;
 
-		if (a->n > tmp->n)
+		if (tmp->prev->n > tmp->n)
 		{
 			change_no(tmp, a, b);
 			print_list(*list);
@@ -30,17 +34,16 @@ void insertion_sort_list(listint_t **list)
 
 void change_no(listint_t *t, listint_t *a, listint_t *b)
 {
+	if (b)
+		b->prev = a;
 
 	a->next = b;
-	b->prev = a;
-
+	t->next = NULL, t->prev = NULL;
 	/*if (t->next)
-		t->next = a;*/
-
+	t->next = a;*/
+	
 	if (a->prev)
-	{
-		a->prev->next = t;
-		a->prev = t;
-	}
-	a->prev = t;
+		a->prev->next = t, t->prev = a->prev;
+
+	t->next = a;
 }
