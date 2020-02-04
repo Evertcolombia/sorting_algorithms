@@ -2,61 +2,67 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void change_no(listint_t *tmp, listint_t *a);
+listint_t *change_no(listint_t **tmp);
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *tmp = NULL, *a = NULL;
+	listint_t *tmp = NULL, *t2 = NULL;
 
 	if (!*list)
 		return;
 
 	tmp = *list;
 
-	if (tmp->next)
-		tmp = tmp->next;
-
 	while (tmp)
 	{
-		a = tmp->prev;
-
-		if (a->n > tmp->n)
+		if (tmp->n > tmp->next->n)
 		{
-			change_no(tmp, a);
-
-			while (tmp->prev)
-			{
-				a = tmp->prev;
-				/*printf("a : %d\n", a->n);*/
-				if (a->n > tmp->n)
-					change_no(tmp,a);
-				tmp = tmp->prev;
-			}
-
+			tmp = change_no(&tmp);
+			/*if (tmp->prev == NULL)
+				*list = tmp;*/
 			print_list(*list);
-		} tmp = tmp->next;
+			t2 = tmp;
+		}
+
+		if (t2 && t2->prev)
+		{
+			while (t2)
+			{
+				if (t2->prev && t2->prev->n > t2->n)
+				{
+					t2 = t2->prev;
+					t2 = change_no(&t2);
+					if (t2->prev == NULL)
+						*list = tmp;
+
+
+					print_list(*list);
+					/*print_list(t2);*/
+				}
+				t2 = t2->prev;
+			}
+		}
+		tmp = tmp->next;
 	}
 }
 
 
-void change_no(listint_t *tmp, listint_t *a)
+listint_t *change_no(listint_t **tmp)
 {
-	if (tmp->next)
-	{
-		a->next = tmp->next;
- 		tmp->next->prev = a;
-        }
-	else
-		a->next = NULL;
+	listint_t *t = NULL, *t_n = NULL;
 
-	if (a->prev)
-	{
-		a->prev->next = tmp;
-		tmp->prev = a->prev;
-	}
-	else
-		tmp->prev = NULL;
+	t = *tmp;
+	t_n = (*tmp)->next;
 
-	tmp->next = a;
-	a->prev = tmp;
+	if (t_n->next)
+		t_n->next->prev = t;
+	if (t->prev)
+		t->prev->next = t_n;
+	t_n->prev = t->prev;
+	t->next = t_n->next;
+	t->prev = t_n;
+	t_n->next = t;
+
+	return (t);
+	
 }
