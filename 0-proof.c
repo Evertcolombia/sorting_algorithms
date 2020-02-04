@@ -5,33 +5,24 @@ int *do_swap(int *array, int pos1, int pos2);
 
 void bubble_sort(int *array, size_t size)
 {
-	size_t i;
+	size_t i, j;
 
 	if (size < 2)
 		return;
 
-	for (i = 1; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
-
-		if (array[i - 1] > array[i])
+		for (j = i; j < size - 1; j++)
 		{
-			if (i == size)
+			if (array[j] > array[j + 1])
 			{
-				do_swap(array, i - 1, i);
-                                print_array(array, size);
-				break;
-			}
-			else
-			{
-				do_swap(array, i - 1, i);
-        	               	print_array(array, size);
-				break;
+				do_swap(array, j, j + 1);
+				print_array(array, size);
 			}
 		}
 	}
-	if (i < size)
-		bubble_sort(array, size);
 }
+
 
 int *do_swap(int *array, int pos1, int pos2)
 {
