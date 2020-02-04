@@ -9,7 +9,7 @@ void selection_sort(int *array, size_t size)
 	unsigned int i = 0, j;
 	int current, tmp = 0;
 	
-	while (i < size - 1)
+	for (i = 0; i < size - 1; i++)
 	{
 		current = i, tmp = i;
 		
@@ -17,10 +17,15 @@ void selection_sort(int *array, size_t size)
 		{
 			if (array[j] < array[current])
 				current = j;
+
+			if (j + 1 == size)
+			{
+				do_swap(array, current, tmp);
+				print_array(array, size);
+			}
 		}
-		do_swap(array, current, tmp);
-		print_array(array, size);
-		i++;
+		/*do_swap(array, current, tmp);
+		print_array(array, size);*/
 	}
 }
 
