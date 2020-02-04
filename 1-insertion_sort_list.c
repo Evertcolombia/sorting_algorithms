@@ -13,11 +13,15 @@ void insertion_sort_list(listint_t **list)
 
 	tmp = *list;
 
-	while (tmp->next)
+	while (tmp->next && *list)
 	{
 		if (tmp->n > tmp->next->n)
 		{
-			change_no(&tmp);
+			tmp = change_no(&tmp);
+				if (!tmp->prev)
+					*list = tmp;
+			print_list(*list);
+			a = tmp;
 
 			while (tmp->prev)
 			{
@@ -52,6 +56,8 @@ listint_t *change_no(listint_t **tmp)
 		tmp->prev = NULL;*/
 
 	h->next = t->next;;
+	t->prev = h->prev;
+	h->prev = t;
 	t->next = h;
 
 	return (t);
