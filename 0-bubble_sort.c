@@ -5,22 +5,25 @@ int *do_swap(int *array, int pos1, int pos2);
 
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, j;
+	size_t j;
+	unsigned long int c = 0;
+	int flag = 1;
 
 	if (size < 2)
 		return;
 
-	for (i = 0; i < size - 1; i++)
+	while (size != 0 && flag)
 	{
-		for (j = i; j < size - 1; j++)
+		flag = 0;
+		for (j = 1; j < (size - c); j++)
 		{
-			if (array[j] > array[j + 1])
+			if (array[j - 1] > array[j])
 			{
-				if (j == size - 2)
-				do_swap(array, j, j + 1);
+				flag++;
+				do_swap(array, j - 1, j);
 				print_array(array, size);
 			}
-		}
+		} c++;
 	}
 }
 
