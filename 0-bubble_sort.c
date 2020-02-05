@@ -3,6 +3,13 @@
 
 int *do_swap(int *array, int pos1, int pos2);
 
+/**
+ * bubble_sort - order an array in ascenden form
+ * @array: array
+ * @size: size of the array
+ *
+ * Return: none
+ */
 void bubble_sort(int *array, size_t size)
 {
 	size_t j;
@@ -27,13 +34,20 @@ void bubble_sort(int *array, size_t size)
 	}
 }
 
-
+/**
+ * do_swap - change  positions in array
+ * @array: array list
+ * @pos1: position to change
+ * @pos2: position to change
+ *
+ * Return: array pointer
+ */
 int *do_swap(int *array, int pos1, int pos2)
 {
 	int key;
 
 	key  = array[pos1];
-	array[pos1 ]= array[pos2];
+	array[pos1] = array[pos2];
 	array[pos2] = key;
 	return (array);
 
