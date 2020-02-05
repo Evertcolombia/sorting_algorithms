@@ -6,26 +6,23 @@ int *do_swap(int *array, int current, int tmp);
 
 void selection_sort(int *array, size_t size)
 {
-	unsigned int i = 0, j;
-	int current, tmp = 0;
+	unsigned int j, c = 0;
+	int current, flag = 0;
 	
-	for (i = 0; i < size - 1; i++)
+	while(c < size && size > 1)
 	{
-		current = i, tmp = i;
-		
-		for (j = i; j < size; j++)
+		current = c, flag = 0;
+
+		for (j = c + 1; j < size; j++)
 		{
 			if (array[j] < array[current])
-				current = j;
-
-			if (j + 1 == size)
-			{
-				do_swap(array, current, tmp);
-				print_array(array, size);
-			}
+				current = j, flag = 1;
 		}
-		/*do_swap(array, current, tmp);
-		print_array(array, size);*/
+		if (flag)
+		{
+			do_swap(array, current, j);
+			print_array(array, size);
+		} c++;
 	}
 }
 
