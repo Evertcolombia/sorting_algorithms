@@ -4,34 +4,31 @@
 int *do_swap(int *array, int pos1, int pos2);
 
 /**
- * bubble_sort - order an array in ascenden form
- * @array: array
- * @size: size of the array
  *
- * Return: none
+ *
  */
-void bubble_sort(int *array, size_t size)
+void quick_sort(int *array, size_t size)
 {
-	size_t j;
-	unsigned long int c = 0;
-	int flag = 1;
+	unsigned long int i, j = 0;
+	int pivot = 0;
 
 	if (size < 2)
 		return;
 
-	while (size > 0 && flag)
+	pivot = (int) size, pivot = pivot -1;
+	i = j;
+	
+	while (j < size)
 	{
-		flag = 0;
-		for (j = 1; j < (size - c); j++)
+		if (array[j] < array[pivot])
 		{
-			if (array[j - 1] > array[j])
-			{
-				flag++;
-				do_swap(array, (j - 1), j);
-				print_array(array, size);
-			}
-		} c++;
+			i += 1;
+			do_swap(array, i, j);
+			print_array(array, size);
+		} j++;
 	}
+	do_swap(array, i, pivot);
+	print_array(array, size);
 }
 
 /**
@@ -50,5 +47,4 @@ int *do_swap(int *array, int pos1, int pos2)
 	array[pos1] = array[pos2];
 	array[pos2] = key;
 	return (array);
-
 }
