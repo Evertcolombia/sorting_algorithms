@@ -4,6 +4,12 @@
 
 listint_t *change_no(listint_t **tmp);
 
+/**
+ * insertion_sort_list - sorta dlinked list
+ * @list: dlinked list
+ *
+ * Return: none
+ */
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *tmp = NULL, *t2 = NULL;
@@ -41,7 +47,12 @@ void insertion_sort_list(listint_t **list)
 	}
 }
 
-
+/**
+ * change_no - change nodes postion
+ * @tmp: temporal node
+ *
+ * Return: changed node position
+ */
 listint_t *change_no(listint_t **tmp)
 {
 	listint_t *t = NULL, *t_n = NULL;
@@ -59,5 +70,4 @@ listint_t *change_no(listint_t **tmp)
 	t_n->next = t;
 
 	return (t);
-	
 }
