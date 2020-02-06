@@ -14,6 +14,9 @@ void selection_sort(int *array, size_t size)
 	unsigned int j, c = 0;
 	int current, flag, tmp;
 
+	if (size < 2)
+		return;
+
 	while (c < size)
 	{
 		current = c, flag = 0, tmp = c;
