@@ -1,5 +1,4 @@
 #include "sort.h"
-#include <stdio.h>
 
 int *do_swap(int *array, int pos1, int pos2);
 

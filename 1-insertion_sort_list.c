@@ -1,6 +1,4 @@
 #include "sort.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 listint_t *change_no(listint_t **tmp);
 
