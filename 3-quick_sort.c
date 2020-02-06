@@ -4,8 +4,11 @@
 int *do_swap(int *array, int pos1, int pos2);
 
 /**
+ * quick_sort -sorting algoritmh
+ * @array: list array
+ * @size: size array
  *
- *
+ * Return: none
  */
 void quick_sort(int *array, size_t size)
 {
@@ -15,9 +18,8 @@ void quick_sort(int *array, size_t size)
 	if (size < 2)
 		return;
 
-	pivot = (int) size, pivot = pivot -1;
+	pivot = (int) size, pivot = pivot - 1;
 	i = j;
-	
 	while (j < size)
 	{
 		if (array[j] < array[pivot])
