@@ -19,6 +19,8 @@ int *do_swap(int *array, int pos1, int pos2)
 
 }
 
+
+
 /**
  * bubble_sort - order an array in ascenden form
  * @array: array
