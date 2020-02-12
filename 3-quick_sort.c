@@ -92,8 +92,8 @@ ssize_t partition(int *array, ssize_t low, ssize_t high, size_t size)
  */
 int *do_swap(int *array, int pos1, int pos2)
 {
-	array[pos1] = array[pos1]^array[pos2];
-	array[pos2] = array[pos1]^array[pos2];
-	array[pos1] = array[pos1]^array[pos2];
+	array[pos1] = array[pos1] ^ array[pos2];
+	array[pos2] = array[pos1] ^ array[pos2];
+	array[pos1] = array[pos1] ^ array[pos2];
 	return (array);
 }

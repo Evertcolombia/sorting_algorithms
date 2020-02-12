@@ -10,13 +10,11 @@
  */
 int *do_swap(int *array, int pos1, int pos2)
 {
-	int key;
+	array[pos1] = array[pos1] ^ array[pos2];
+	array[pos2] = array[pos1] ^ array[pos2];
+	array[pos1] = array[pos1] ^ array[pos2];
 
-	key  = array[pos1];
-	array[pos1] = array[pos2];
-	array[pos2] = key;
 	return (array);
-
 }
 
 
