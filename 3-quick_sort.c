@@ -55,7 +55,7 @@ void keep_sort(int *array, ssize_t low, ssize_t high, size_t size)
  */
 ssize_t partition(int *array, ssize_t low, ssize_t high, size_t size)
 {
-	int pivot, tmp;
+	int pivot;
 	ssize_t i, j;
 
 	pivot = array[high];
@@ -69,9 +69,6 @@ ssize_t partition(int *array, ssize_t low, ssize_t high, size_t size)
 			if (i != j)
 			{
 				do_swap(array, i, j);
-				/*tmp = array[i];
-				array[i] = array[j];
-				array[j] = tmp;*/
 				print_array(array, size);
 			}
 		}
@@ -79,9 +76,7 @@ ssize_t partition(int *array, ssize_t low, ssize_t high, size_t size)
 
 	if (array[i + 1] > array[high])
 	{
-		tmp = array[i + 1];
-		array[i + 1] = array[high];
-		array[high] = tmp;
+		do_swap(array, (i + 1), high);
 		print_array(array, size);
 	}
 	return (i + 1);
